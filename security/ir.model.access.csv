@@ -1,3 +1,6 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_compras_producto,compras.producto,model_compras_producto,,1,1,1,1
 access_compras_proveedor,compras.proveedor,model_compras_proveedor,,1,1,1,1
+access_compras_ordencompra,compras.ordencompra,model_compras_ordencompra,,1,1,1,1
+access_compras_detallecompra,compras.detallecompra,model_compras_detallecompra,,1,1,1,1
+access_compras_solcomp,solcomp,model_solcomp,,1,1,1,1
