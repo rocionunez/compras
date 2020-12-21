@@ -25,6 +25,7 @@
     'data': [
          'security/ir.model.access.csv',
         'views/view_producto.xml',
+        'views/view_solicitudes.xml',
        # 'views/view_proveedor.xml'
         # 'views/templates.xml',
     ],
