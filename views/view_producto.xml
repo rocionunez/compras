@@ -23,72 +23,6 @@
                 </form>
             </field>
         </record>
-
-        <!-- formulario proveedor-->
-        <record id="compras.proveedor_view" model="ir.ui.view">
-            <field name="name">Proveedor</field>
-            <field name="model">compras.proveedor</field>
-            <field name="arch" type="xml">
-                <form string="Proveedor">
-                    <sheet>
-                        <Separator string="Datos"/>
-                        <group col="4">
-                            <field name="name" />
-                            <field name="business_category" widget='radio'/>
-                            <field name="region" widget='radio'/>
-                            <field name="city"/>
-                            <field name="email" widget='email'/>
-                            <field name="phone_number" widget='phone'/>
-                            <field name="website" widget='url'/>
-                        </group>
-                        <Separator string="Productos"/>
-                        <group>
-                            <field name="producto_ids" nolabel="1">
-                                <tree string="Productos" editable="bottom">
-                                    <field name="name"/>
-                                    <field name="price" />
-                                    <field name="description"/>
-                                </tree>
-                            </field>
-                        </group>
-                    </sheet>
-                </form>
-            </field>
-        </record>
-
-
-        <!-- lista de proveedor-->
-        <record model="ir.ui.view" id="compras.proveedor_list">
-            <field name="name">Proveedor</field>
-            <field name="model">compras.proveedor</field>
-            <field name="arch" type="xml">
-                <tree>
-                    <field name="name"/>
-                    <field name="total_productos"/>
-                </tree>
-            </field>
-        </record>
-
-        <!-- action window proveedor-->
-        <record model="ir.actions.act_window" id="compras.proveedor_action_window">
-            <field name="name">Proveedor</field>
-            <field name="res_model">compras.proveedor</field>
-            <field name="view_mode">tree,form</field>
-        </record>
-        <!-- action server proveedor-->
-        <record model="ir.actions.server" id="compras.proveedor_action_server">
-            <field name="name">proveedor server</field>
-            <field name="model_id" ref="model_compras_proveedor"/>
-            <field name="state">code</field>
-            <field name="code">
-            action = {
-            "type": "ir.actions.act_window",
-            "view_mode": "tree,form",
-            "res_model": self._name,
-            }
-            </field>
-        </record>
-
         <!-- vista de producto-->
 
         <record model="ir.ui.view" id="compras.producto_list">
@@ -126,14 +60,140 @@
             </field>
         </record>
 
+        <!-- formulario proveedor-->
+        <record id="compras.proveedor_view" model="ir.ui.view">
+            <field name="name">Proveedor</field>
+            <field name="model">compras.proveedor</field>
+            <field name="arch" type="xml">
+                <form string="Proveedor">
+                    <sheet>
+                        <Separator string="Datos"/>
+                        <group col="4">
+                            <field name="name" />
+                            <field name="business_category" widget='radio'/>
+                            <field name="region" widget='radio'/>
+                            <field name="city"/>
+                            <field name="email" widget='email'/>
+                            <field name="phone_number" widget='phone'/>
+                            <field name="website" widget='url'/>
+                        </group>
+                        <Separator string="Productos"/>
+                        <group>
+                            <field name="producto_ids" nolabel="1">
+                                <tree string="Productos" editable="bottom">
+                                    <field name="name"/>
+                                    <field name="price" />
+                                    <field name="description"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- lista de proveedor-->
+        <record model="ir.ui.view" id="compras.proveedor_list">
+            <field name="name">Proveedor</field>
+            <field name="model">compras.proveedor</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="total_productos"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- action window proveedor-->
+        <record model="ir.actions.act_window" id="compras.proveedor_action_window">
+            <field name="name">Proveedor</field>
+            <field name="res_model">compras.proveedor</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <!-- action server proveedor-->
+        <record model="ir.actions.server" id="compras.proveedor_action_server">
+            <field name="name">proveedor server</field>
+            <field name="model_id" ref="model_compras_proveedor"/>
+            <field name="state">code</field>
+            <field name="code">
+            action = {
+            "type": "ir.actions.act_window",
+            "view_mode": "tree,form",
+            "res_model": self._name,
+            }
+            </field>
+        </record>
+
+        <!-- formulario orden de compra-->
+        <record id="compras.ordencompra_view" model="ir.ui.view">
+            <field name="name">Orden</field>
+            <field name="model">compras.ordencompra</field>
+            <field name="arch" type="xml">
+                <form string="Proveedor">
+                    <sheet>
+                        <Separator string="Orden de Compra"/>
+                        <group col="4">
+                            <field name="name" />
+                            <field name="date_order"/>
+                            <field name="notes" />
+                            <field name="proveedor_ids"/>
+                        </group>
+                        <Separator string="Detalle"/>
+                        <group>
+                            <field name="detalle_ids" nolabel="1">
+                                <tree string="Proveedor" >
+                                    <field name="producto_ids"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+                <!-- lista de  la orden-->
+        <record model="ir.ui.view" id="compras.ordencompra_list">
+            <field name="name">Orden</field>
+            <field name="model">compras.ordencompra</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="detalle_ids"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- action window orden compra-->
+        <record model="ir.actions.act_window" id="compras.ordencompra_action_window">
+            <field name="name">Orden</field>
+            <field name="res_model">compras.ordencompra</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <!-- action server orden compra-->
+        <record model="ir.actions.server" id="compras.ordencompra_action_server">
+            <field name="name">orden server</field>
+            <field name="model_id" ref="model_compras_ordencompra"/>
+            <field name="state">code</field>
+            <field name="code">
+            action = {
+            "type": "ir.actions.act_window",
+            "view_mode": "tree,form",
+            "res_model": self._name,
+            }
+            </field>
+        </record>
+
+
+
 
 
 
         <!-- top menu -->
 
         <menuitem name="Compras" id="compras.menu_root"/>
+        <menuitem name="Orden de Compra" id="compras.menu_ordencompra" parent = "compras.menu_root" action="compras.ordencompra_action_window"/>
         <menuitem name="Proveedor" id="compras.proveedor" parent = "compras.menu_root" action="compras.proveedor_action_window"/>
         <menuitem name="Producto" id="compras.menu_producto" parent = "compras.menu_root" action="compras.producto_action_window"/>
+
 
 
         <!-- menu categories-->
