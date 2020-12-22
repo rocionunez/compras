@@ -136,14 +136,18 @@
                             <field name="name" />
                             <field name="date_order"/>
                             <field name="notes" />
-                            <field name="proveedor_ids"/>
+                            <field name="proveedor_id" string="Proveedor">
+                               <tree>
+                                    <field name="name"/> 
+                               </tree>
+                            </field>
                         </group>
                         <Separator string="Detalle"/>
                         <group>
                             <field name="detalle_ids" nolabel="1">
-                                <tree string="Proveedor" >
+                                <tree string="Producto" >
                                     <field name="producto_ids"/>
-                                </tree>
+                                </tree> 
                             </field>
                         </group>
                     </sheet>
