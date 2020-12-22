@@ -23,8 +23,10 @@ class ComprasProveedor(models.Model):
     @api.one
     def _total_productos(self):
         self.total_productos = len(self.producto_ids)
+    
     order_id = fields.Many2one(
         'compras.ordencompra','proveedor_ids')
+
 
 
 class ComprasProducto(models.Model):
@@ -55,12 +57,13 @@ class ComprasOrdenDeCompra(models.Model):
     name=fields.Char("Orden de Compra")
     date_order = fields.Date(string="Fecha Orden de compra", required=True)
     notes = fields.Char(string="Comentarios")
-    proveedor_ids = fields.One2many(
-        'compras.proveedor', 'order_id', string="Proveedor")
+    #proveedor_ids = fields.One2many(
+     #   'compras.proveedor', 'order_id', string="Proveedor")
     detalle_ids=fields.One2many('compras.detallecompra', 'order_id')
-#     value2 = fields.Float(compute="_value_pc", store=True)
-#     description = fields.Text()
-#
-#     @api.depends('value')
-#     def _value_pc(self):
-#         self.value2 = float(self.value) / 100
+    #total_proveedores = fields.Integer(string="Total Proveedores", compute="_total_proveedores") 
+    #@api.one
+    #def _total_proveedores(self):
+     
+     #   self.total_proveedores =len(self.proveedor_ids) 
+    proveedor_id = fields.Many2one('compras.proveedor', string="nombre proveedor")
+
