@@ -15,6 +15,6 @@ class Solicitud(models.Model):
                                                             ],
                                 default="a", track_visibility='onchange', required= True )
         
-    obs= fields.Text(string="Observaciones")
+    obs= fields.Text(string="Comentarios")
         
     solicitud_id = fields.Many2one('solicitar',string="Solicitudes",required= True)
