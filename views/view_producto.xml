@@ -1,65 +1,5 @@
 <odoo>
     <data>
-
-        <!-- formulario de productos-->
-
-        <record model="ir.ui.view" id="compras.producto_view">
-            <field name="name">Productos</field>
-            <field name="model">compras.producto</field>
-            <field name="arch" type="xml">
-                <form string="Producto">
-                    <sheet>
-                        <group>
-                            <!-- general-->
-                            <field name="name"/>
-                        </group>
-                        <group col="4">
-                            <!-- detalle -->
-                            <field name="price"/>
-                            <field name="description"/>
-                            <field name="proveedor_id"/>
-                        </group>
-                    </sheet>
-                </form>
-            </field>
-        </record>
-        <!-- vista de producto-->
-
-        <record model="ir.ui.view" id="compras.producto_list">
-            <field name="name">Gestión de Compras</field>
-            <field name="model">compras.producto</field>
-            <field name="arch" type="xml">
-                <tree>
-                    <field name="name"/>
-                    <field name="price" />
-                    <field name="description"/>
-                    <field name="proveedor_id"/>
-                </tree>
-            </field>
-        </record>
-
-
-
-        <!-- acción - qué va a pasar cuando ejecute el menú del producto-->
-        <record model="ir.actions.act_window" id="compras.producto_action_window">
-            <field name="name">Productos</field>
-            <field name="res_model">compras.producto</field>
-            <field name="view_mode">tree,form</field>
-        </record>
-        <!-- action server producto-->
-        <record model="ir.actions.server" id="compras.producto_action_server">
-            <field name="name">producto server</field>
-            <field name="model_id" ref="model_compras_producto"/>
-            <field name="state">code</field>
-            <field name="code">
-            action = {
-            "type": "ir.actions.act_window",
-            "view_mode": "tree,form",
-            "res_model": self._name,
-            }
-            </field>
-        </record>
-
         <!-- formulario proveedor-->
         <record id="compras.proveedor_view" model="ir.ui.view">
             <field name="name">Proveedor</field>
@@ -77,16 +17,6 @@
                             <field name="phone_number" widget='phone'/>
                             <field name="website" widget='url'/>
                         </group>
-                        <Separator string="Productos"/>
-                        <group>
-                            <field name="producto_ids" nolabel="1">
-                                <tree string="Productos" editable="bottom">
-                                    <field name="name"/>
-                                    <field name="price" />
-                                    <field name="description"/>
-                                </tree>
-                            </field>
-                        </group>
                     </sheet>
                 </form>
             </field>
@@ -99,7 +29,9 @@
             <field name="arch" type="xml">
                 <tree>
                     <field name="name"/>
-                    <field name="total_productos"/>
+                    <field name="business_category"/>
+                    <field name="region"/>
+                    <field name="city"/>
                 </tree>
             </field>
         </record>
@@ -145,8 +77,12 @@
                         <Separator string="Detalle"/>
                         <group>
                             <field name="detalle_ids" nolabel="1">
-                                <tree string="Producto" >
-                                    <field name="producto_ids"/>
+                                <tree string="Producto" editable="bottom" >
+                                    <field name="name"/>
+                                    <field name="price"/>
+                                    <field name="qtty"/>
+                                    <field name="description"/>
+                                    <field name="total" sum="Total"/>
                                 </tree> 
                             </field>
                         </group>
@@ -161,7 +97,8 @@
             <field name="arch" type="xml">
                 <tree>
                     <field name="name"/>
-                    <field name="detalle_ids"/>
+                    <field name="proveedor_id" string="Proveedor"/>
+                    <field name="date_order" string="Fecha Orden de compra"/>
                 </tree>
             </field>
         </record>
@@ -196,14 +133,5 @@
         <menuitem name="Compras" id="compras.menu_root"/>
         <menuitem name="Orden de Compra" id="compras.menu_ordencompra" parent = "compras.menu_root" action="compras.ordencompra_action_window"/>
         <menuitem name="Proveedor" id="compras.proveedor" parent = "compras.menu_root" action="compras.proveedor_action_window"/>
-        <menuitem name="Producto" id="compras.menu_producto" parent = "compras.menu_root" action="compras.producto_action_window"/>
-
-
-
-        <!-- menu categories-->
-        <!--
-            <menuitem name="Menu 1" id="seguros.menu_1" parent="seguros.menu_root"/>
-            <menuitem name="Menu 2" id="seguros.menu_2" parent="seguros.menu_root"/> -->
     </data>
-
 </odoo>
