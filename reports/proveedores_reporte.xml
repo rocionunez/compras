@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <report id="action_reporte_proveedor"
+                string="Proveedores"
+                model="compras.proveedor"
+                report_type="qweb-pdf"
+                name="compras.reporte_proveedor_template"/>
+
+
+
+        <template id="reporte_proveedor_template">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout"> 
+                    <div class="page">
+                        <div style="border-bottom: 1px solid black;">
+                        <h2 class="text-center">Ṕroveedores</h2>
+                        </div>
+                        <br></br>
+                        <table class="table table-condensed table-bordered" >
+                            <thead class="table-active">
+                                <th style="width: 30%">Nombre</th>
+                                <th class="text-center" style="width: 15%">Región</th>
+                                <th class="text-center" style="width: 15%">Ciudad</th>
+                                <th class="text-center" style="width: 15%">Categoría</th>
+                                <th class="text-center" style="width: 15%">Correo electrónico</th>
+                                <th class="text-center" style="width: 15%">Número telefónico</th>
+                                <th class="text-center" style="width: 15%">Sitio web</th>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="docs" t-as="compras.proveedor">
+                                    <tr>
+                                        <td ><span t-field="compras_proveedor.name"/></td>
+                                        <td class="text-center"><span t-field="compras_proveedor.region"/></td>                                     
+                                        <td class="text-center"><span t-field="compras_proveedor.city"/></td>
+                                        <td class="text-center"><span t-field="compras_proveedor.business_category"/></td>
+                                        <td class="text-center"><span t-field="compras_proveedor.email"/></td>
+                                        <td class="text-center"><span t-field="compras_proveedor.phone_number" widget='phone'/></td>
+                                        <td class="text-center"><span t-field="compras_proveedor.website"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="footer o_standard_footer" style="border-top: 1px solid black;">
+                    <div class="row text-center">
+                        <div class="col col-12 text-center">
+                            <ul class="list-inline">
+                                <li class="list-inline-item">Page:</li>
+                                <li class="list-inline-item">
+                                    <span class="page"/>
+                                </li>
+                                <li class="list-inline-item">/</li>
+                                <li class="list-inline-item">
+                                    <span class="topage"/>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    </div>
+                </t>  
+            </t>        
+        </template>
+    </data>
+</odoo>

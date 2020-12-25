@@ -1,15 +1,15 @@
 <odoo>
   <data>
-    
+
     <!-- listado de solicitud -->
     <record model="ir.ui.view" id="solcomp_list">
       <field name="name">Solictud list</field>
       <field name="model">solcomp</field>
-      <field name="arch" type="xml">  
-        
-        <tree decoration-danger= "estado=='a'" decoration-info= "estado=='c'" decoration-success= "estado=='d'">          
+      <field name="arch" type="xml">
+
+        <tree decoration-danger= "estado=='a'" decoration-warning= "estado=='b'" decoration-success= "estado=='c'" decoration-muted= "estado=='d'">
           <field name="name"/>
-          <field name="cant"/> 
+          <field name="cant"/>
           <field name="estado"/>
           <field name="date_solicitud"/>
         </tree>
@@ -18,34 +18,34 @@
 
 
 
-        <!-- Solicitud de compra -->
-    <record id="solcomp_view" model="ir.ui.view" >
+    <!-- Solicitud de compra -->
+    <record id="solcomp_view" model="ir.ui.view">
       <field name="name">Solicitud</field>
       <field name="model">solcomp</field>
       <field name="arch" type="xml">
-      <form string="Producto">
-        <sheet>
-        <Separator string="Solicitud de producto"/>
-          <group col="4">
-            <field name="name"/>
-            <field name="cant"/>
-          </group>
-          <group col="4">
-            <field name="date_solicitud"/>
-            <field name="estado"/>  
-          </group>
-          <group>
+        <form string="Producto">
+          <sheet>
+            <Separator string="Solicitud de producto"/>
+            <group col="4">
+              <field name="name"/>
+              <field name="cant"/>
+            </group>
+            <group col="4">
+              <field name="date_solicitud"/>
+              <field name="estado"/>
+            </group>
+            <group>
               <field name="obs"/>
             </group>
-          
-        </sheet>
-      </form>
+
+          </sheet>
+        </form>
       </field>
-    </record> 
+    </record>
 
 
 
-  <record model="ir.actions.act_window" id="solcomp_action_window">
+    <record model="ir.actions.act_window" id="solcomp_action_window">
       <field name="name">Solicitud de compra</field>
       <field name="res_model">solcomp</field>
       <field name="view_mode">tree,form</field>
@@ -64,9 +64,8 @@
       </field>
     </record>
 
-    <menuitem name="Solicitud de articulos" id="solicitud_menu_product" parent="compras.menu_root"
-        action="solcomp_action_window"/>
-        
-   
+    <menuitem name="Solicitud de articulos" id="solicitud_menu_product" parent="compras.menu_root" action="solcomp_action_window"/>
+
+
   </data>
 </odoo>

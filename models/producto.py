@@ -40,7 +40,7 @@ class ComprasOrdenDeCompra(models.Model):
 class DetalleCompra(models.Model):
     _name = 'compras.detallecompra'
     producto_ids = fields.One2many(
-        'compras.producto', 'detalle_id', string="Productos")
+        'compras.producto', 'detalle_id', nolabel="1")
     order_id = fields.Many2one('compras.ordencompra', 'detalle_ids')
     name = fields.Char(string="Nombre producto", required=True)
     price = fields.Integer(string="Precio unitario",

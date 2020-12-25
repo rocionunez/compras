@@ -9,7 +9,7 @@ class Solicitud(models.Model):
     cant= fields.Integer(string="Cantidad",required= True)
     date_solicitud = fields.Date('Fecha de solicitud', default=fields.Date.context_today, readonly=True, select=True)
     estado = fields.Selection(string='Estado', selection=[('a', 'Pedido pendiente'),
-                                                           ('b', 'Pedido realizado'), 
+                                                           ('b', 'Pedido en proceso'), 
                                                             ('c', 'Pedido recibido'),
                                                             ('d', 'Ingresado a inventario'),
                                                             ],
